@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image/image_page.dart';
 import 'package:image/latihan_audio/bottom_page.dart';
+import 'package:image/latihan_audio/page_splasj.dart';
 import 'package:image/latihan_audio/search_page.dart';
 import 'package:image/latihan_listPegawai.dart';
 import 'package:image/latihan_maps/latihan_detailMaps.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const PageBottomNavigationBar(),
+      home: PageListUser(),
       debugShowCheckedModeBanner: false,
     );
   }
