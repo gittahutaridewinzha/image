@@ -55,17 +55,35 @@ class _PageProvinsiState extends State<PageProvinsi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Provinces',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
-          ),
+        backgroundColor: Colors.red, // Mengubah warna latar belakang judul menjadi merah
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0), // Menambahkan padding kiri
+              child: Text(
+                'hai, Selamat Pagi',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white, // Mengubah warna teks menjadi putih agar kontras dengan latar belakang merah
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 16.0), // Menambahkan padding kiri
+            //   child: Text(
+            //     'Gitta Hutari',
+            //     style: TextStyle(
+            //       fontWeight: FontWeight.bold,
+            //       color: Colors.white, // Mengubah warna teks menjadi putih agar kontras dengan latar belakang merah
+            //       fontSize: 16,
+            //     ),
+            //   ),
+            // ),
+          ],
         ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black87),
+        titleSpacing: 0, // Menempatkan teks di sebelah kiri judul
         actions: [
           IconButton(
             onPressed: () {
@@ -78,7 +96,7 @@ class _PageProvinsiState extends State<PageProvinsi> {
       body: Padding(
         padding: EdgeInsets.all(10),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
               controller: txtCari,
@@ -96,7 +114,15 @@ class _PageProvinsiState extends State<PageProvinsi> {
                 prefixIcon: Icon(Icons.search),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
+            Text(
+              'Daftar Provinsi',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(height: 10),
             Expanded(
               child: filteredProvinsi == null
                   ? Center(child: CircularProgressIndicator())
@@ -113,14 +139,20 @@ class _PageProvinsiState extends State<PageProvinsi> {
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: ListTile(
-                        leading: Icon(Icons.location_city, color: Colors.blueAccent, size: 40),
-                        title: Text(
-                          data?.namaProv ?? '',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
-                            fontSize: 20,
-                          ),
+                        leading: Icon(Icons.location_city, color: Colors.red, size: 40),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween, // Untuk memposisikan ikon di sebelah kanan
+                          children: [
+                            Text(
+                              data?.namaProv ?? '',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Icon(Icons.arrow_forward, color: Colors.redAccent), // Menambahkan ikon panah ke samping
+                          ],
                         ),
                         onTap: () {
                           Navigator.push(

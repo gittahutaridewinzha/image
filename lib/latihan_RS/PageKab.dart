@@ -66,7 +66,7 @@ class _PageKabState extends State<PageKab> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.red, // Mengubah warna latar belakang judul menjadi merah
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.black87),
         actions: [
@@ -81,7 +81,7 @@ class _PageKabState extends State<PageKab> {
       body: Padding(
         padding: EdgeInsets.all(10),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
               controller: txtCari,
@@ -97,6 +97,17 @@ class _PageKabState extends State<PageKab> {
                 filled: true,
                 fillColor: Colors.grey[200],
                 prefixIcon: Icon(Icons.search),
+              ),
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0), // Menambahkan padding kiri
+              child: Text(
+                'Daftar Kabupaten',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
             ),
             SizedBox(height: 20),
@@ -116,14 +127,20 @@ class _PageKabState extends State<PageKab> {
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: ListTile(
-                        leading: Icon(Icons.location_on, color: Colors.blueAccent, size: 40),
-                        title: Text(
-                          data?.namaKab ?? '',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
-                            fontSize: 20,
-                          ),
+                        leading: Icon(Icons.location_on, color: Colors.red, size: 40),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween, // Untuk memposisikan ikon di sebelah kanan
+                          children: [
+                            Text(
+                              data?.namaKab ?? '',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Icon(Icons.arrow_forward, color: Colors.red), // Menambahkan ikon panah ke samping
+                          ],
                         ),
                         onTap: () {
                           Navigator.push(

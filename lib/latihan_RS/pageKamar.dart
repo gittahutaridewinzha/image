@@ -74,7 +74,7 @@ class _PageKamarState extends State<PageKamar> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.red,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.black87),
         actions: [

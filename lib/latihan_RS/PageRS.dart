@@ -66,7 +66,7 @@ class _PageRsState extends State<PageRs> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.red,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.black87),
         actions: [
