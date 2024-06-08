@@ -40,8 +40,6 @@ class Datum {
   String gambar;
   String alamat;
   String noTelp;
-  String latRs;
-  String longRs;
 
   Datum({
     required this.idRs,
@@ -51,8 +49,6 @@ class Datum {
     required this.gambar,
     required this.alamat,
     required this.noTelp,
-    required this.latRs,
-    required this.longRs,
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
@@ -63,8 +59,6 @@ class Datum {
     gambar: json["gambar"],
     alamat: json["alamat"],
     noTelp: json["no_telp"],
-    latRs: json["lat_rs"],
-    longRs: json["long_rs"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -75,7 +69,5 @@ class Datum {
     "gambar": gambar,
     "alamat": alamat,
     "no_telp": noTelp,
-    "lat_rs": latRs,
-    "long_rs": longRs,
   };
 }

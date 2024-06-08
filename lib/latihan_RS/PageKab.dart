@@ -108,28 +108,32 @@ class _PageKabState extends State<PageKab> {
                 itemBuilder: (context, index) {
                   Datum? data = filteredKabupaten?[index];
                   return Card(
-                    elevation: 2,
-                    margin: EdgeInsets.symmetric(vertical: 8),
+                    elevation: 5,
+                    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child: ListTile(
-                      title: Text(
-                        data?.namaKab ?? '',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                          fontSize: 18,
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => PageRs(idKabupaten: data?.idKabupaten ?? ''),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: ListTile(
+                        leading: Icon(Icons.location_on, color: Colors.blueAccent, size: 40),
+                        title: Text(
+                          data?.namaKab ?? '',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                            fontSize: 20,
                           ),
-                        );
-                      },
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => PageRs(idKabupaten: data?.idKabupaten ?? ''),
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   );
                 },

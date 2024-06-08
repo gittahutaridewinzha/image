@@ -106,28 +106,31 @@ class _PageProvinsiState extends State<PageProvinsi> {
                   Datum? data = filteredProvinsi?[index];
                   return Card(
                     elevation: 5,
-                    margin: EdgeInsets.symmetric(vertical: 8),
+                    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child: ListTile(
-                      leading: Icon(Icons.location_city, color: Colors.blueAccent),
-                      title: Text(
-                        data?.namaProv ?? '',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                          fontSize: 18,
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => PageKab(idProv: data?.idProv ?? ''),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: ListTile(
+                        leading: Icon(Icons.location_city, color: Colors.blueAccent, size: 40),
+                        title: Text(
+                          data?.namaProv ?? '',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                            fontSize: 20,
                           ),
-                        );
-                      },
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => PageKab(idProv: data?.idProv ?? ''),
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   );
                 },
