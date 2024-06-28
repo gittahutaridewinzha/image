@@ -38,8 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   image_picker: ^1.0.4
   google_maps_flutter: ^2.0.10
-  video_player: ^2.8.6
   audioplayers: ^0.20.1
+  video_player: ^2.8.7
 
 
 
