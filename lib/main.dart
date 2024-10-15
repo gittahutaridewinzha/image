@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image/image_page.dart';
+import 'package:image/latWisata/wisataPage.dart';
 import 'package:image/lat_bola/page_sepakbola.dart';
 import 'package:image/lat_crud/list_page.dart';
 import 'package:image/lat_delete/siswaPage.dart';
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: VideoPlayerScreen(),
+      home: PageMaps(),
       debugShowCheckedModeBanner: false,
     );
   }

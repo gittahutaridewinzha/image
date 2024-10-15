@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:image/latihan_maps/page_detail.dart';
-import 'package:image/model/modelMaps.dart';
 import 'package:http/http.dart' as http;
+import 'package:image/latWisata/detailWisata.dart';
+import 'package:image/latWisata/modelWisata.dart';
 
-class PageMaps extends StatefulWidget {
-  const PageMaps({Key? key});
+
+class PageWisata extends StatefulWidget {
+  const PageWisata({Key? key});
 
   @override
-  State<PageMaps> createState() => _PageMapsState();
+  State<PageWisata> createState() => _PageWisataState();
 }
 
-class _PageMapsState extends State<PageMaps> {
+class _PageWisataState extends State<PageWisata> {
   TextEditingController txtCari = TextEditingController();
-  List<Datum>? berita;
-  List<Datum>? filteredBerita;
+  List<Datum>? wisata;
+  List<Datum>? filteredWisata;
 
   @override
   void initState() {
@@ -24,10 +25,10 @@ class _PageMapsState extends State<PageMaps> {
   Future<void> fetchData() async {
     try {
       http.Response response = await http.get(
-          Uri.parse('http://172.26.16.1/MAPS/detailMaps.php'));
+          Uri.parse('http://172.26.16.1/wisata/getList.php'));
       setState(() {
-        berita = modelMapsFromJson(response.body).data;
-        filteredBerita = berita;
+        wisata = modelWisataFromJson(response.body).data;
+        filteredWisata = wisata;
       });
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -36,9 +37,9 @@ class _PageMapsState extends State<PageMaps> {
     }
   }
 
-  void searchBerita(String keyword) {
+  void searchWisata(String keyword) {
     setState(() {
-      filteredBerita = berita
+      filteredWisata = wisata
           ?.where((datum) =>
           datum.nama.toLowerCase().contains(keyword.toLowerCase()))
           .toList();
@@ -50,7 +51,7 @@ class _PageMapsState extends State<PageMaps> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Campus Maps',
+          'Tourist Destination',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.black87,
@@ -84,7 +85,7 @@ class _PageMapsState extends State<PageMaps> {
               TextFormField(
                 controller: txtCari,
                 onChanged: (value) {
-                  searchBerita(value);
+                  searchWisata(value);
                 },
                 decoration: InputDecoration(
                   hintText: "Search",
@@ -114,14 +115,14 @@ class _PageMapsState extends State<PageMaps> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'gambar/pnp.jpg',
+                      'gambar/komodo.jpg',
                       fit: BoxFit.contain,
                       height: 200,
                       width: 200,
                     ),
                     SizedBox(width: 10),
                     Image.asset(
-                      'gambar/unand.jpg',
+                      'gambar/trio.jpg',
                       fit: BoxFit.contain,
                       height: 230,
                       width: 230,
@@ -132,7 +133,7 @@ class _PageMapsState extends State<PageMaps> {
               SizedBox(height: 20),
               Center(
                 child: Text(
-                  'Near You',
+                  'tourist destination',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
@@ -142,7 +143,7 @@ class _PageMapsState extends State<PageMaps> {
               SizedBox(height: 5),
               Center(
                 child: Text(
-                  'Padang Kota Tercinta',
+                  'indonesia',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[700],
@@ -153,15 +154,15 @@ class _PageMapsState extends State<PageMaps> {
               ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: filteredBerita?.length ?? 0,
+                itemCount: filteredWisata?.length ?? 0,
                 itemBuilder: (context, index) {
-                  Datum? data = filteredBerita?[index];
+                  Datum? data = filteredWisata?[index];
                   return GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => DetailBeritaMaps(data),
+                          builder: (_) => DetailWisata(data),
                         ),
                       );
                     },
@@ -180,7 +181,7 @@ class _PageMapsState extends State<PageMaps> {
                               topRight: Radius.circular(15),
                             ),
                             child: Image.network(
-                              'http://172.26.16.1/MAPS/gambar/${data?.gambar}',
+                              'http://172.26.16.1/wisata/gambar/${data?.gambar}',
                               height: 180,
                               width: double.infinity,
                               fit: BoxFit.cover,
@@ -231,6 +232,18 @@ class _PageMapsState extends State<PageMaps> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (_) => PageAdd(), // Navigasi ke PageAdd
+          //   ),
+          // );
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.blue,
       ),
     );
   }

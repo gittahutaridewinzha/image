@@ -31,7 +31,7 @@ class DetailBeritaMaps extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: Image.network(
-              "http://10.126.32.196/MAPS/gambar/${data?.gambar}",
+              "http://172.26.16.1/MAPS/gambar/${data?.gambar}",
               width: double.infinity,
               height: 250,
               fit: BoxFit.cover,
