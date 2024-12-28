@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image/db_microservice/home_page.dart';
 import 'package:image/image_page.dart';
 import 'package:image/latWisata/wisataPage.dart';
 import 'package:image/lat_bola/page_sepakbola.dart';
@@ -13,6 +14,8 @@ import 'package:image/latihan_audio/search_page.dart';
 import 'package:image/latihan_listPegawai.dart';
 import 'package:image/latihan_maps/latihan_detailMaps.dart';
 import 'package:image/latihan_maps/page_maps.dart';
+import 'package:image/list_berita/berita.dart';
+import 'package:image/list_siswa/login.dart';
 import 'package:image/maps_page.dart';
 import 'package:image/mediaplayer/pagemedia.dart';
 import 'package:image/page_beranda.dart';
@@ -48,7 +51,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: PageMaps(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
